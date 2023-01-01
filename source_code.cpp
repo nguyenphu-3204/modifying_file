@@ -8,22 +8,26 @@ fstream fs;
 int n;
 vector<string> l;
 
-void check_file_status();
+void check_status_file();
 void bai1();
 void bai2();
+void bai3();
+void bai4();
 
 int main(){
     fs.open("D:\\vscode\\multiple_matrix\\input", fstream::in|fstream::out );
-    check_file_status(fs);
+    check_status_file();
+    fs.clear();
     bai1();
     bai2();
-    bai1();
+    bai3();
+    bai4();
     fs.close();
     system("pause");
 return 0;
 }
 
-void check_file_status(){
+void check_status_file(){
     if(!fs.is_open()){
         cout << "Cannot open this file!\n";
         exit(0);
@@ -45,12 +49,45 @@ void bai1(){
 
 void bai2(){
     system("cls");
-    cout << "Enter a name of new student:\n";
-    string tmp; getline(cin, tmp); 
     fs.seekg(0, fs.beg);
+    cout << "Enter name of new student:\n";
+    string tmp; getline(cin, tmp); 
     fs << 5;
     fs.seekg(0, fs.end);
     fs << endl << tmp;
-    cout << "insert student success\n";
+    cout << "Insert student success!\n";
+    system("pause");
+}
+
+void bai3(){
+    bai1();
+    system("cls");
+    fs.seekg(0, fs.beg);
+    cout << "Enter key: \n";
+    string key; getline(cin, key);
+    cout << "Result:\n";
+    for(auto name:l){
+        if( name.find(key) != -1 ) cout << name << endl;
+    }
+
+    system("pause");
+}
+
+void bai4(){
+    bai1();
+    system("cls");
+    fs.seekg(0, fs.beg);
+    cout << "Enter key: \n";
+    string key; getline(cin, key);
+    cout << "Enter new value: \n";
+    string new_val; getline(cin, new_val);
+    cout << "Result:\n";
+    for(auto &name:l){
+        int pos = name.find(key);
+        if( pos != -1 ) cout << name << endl;
+        name = new_val;
+    }
+    fs.seekg(fs.beg);
+    fs << "hehe";
     system("pause");
 }
