@@ -25,8 +25,7 @@ string lowercase_(string s){
 
 void get_studentName(){
     l.resize(n, "");
-    for_(i, 1, n-1) getline(f, l[i]);
-    f.seekg(10, fend);
+    for_(i, 0, n-1) getline(f, l[i]);
 }
 
 bool match_(string const &name, string const &key){
@@ -38,7 +37,7 @@ void find_and_replace(string const &key, string const &new_val){
         name = new_val;
         return;
     }
-    cout << "Modify file fail!\n";
+    cout << "Modifying name failed!\n";
     exit(0);
 }
 
@@ -57,15 +56,14 @@ int main(){
     find_and_replace(key, new_val);
 
     //rewirte file
-    truncate(filename, 1); //remove all characters in file
-    f.clear();          // remove eof flag  :)))
+    truncate(filename, 0); //remove all characters in file
     f.seekg(0, fbegin); // set pos = f.begin
     f.put(n+'0');
     for(auto name:l){
         f.put('\n');
         f.write(name.c_str(), name.size()); 
     } 
-    cout << "Modify student success!\n";
+    cout << "Modifying student succeed!\n";
     f.close();
 return 0;
 } 
