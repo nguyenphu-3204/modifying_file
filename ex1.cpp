@@ -1,4 +1,3 @@
-//np
 #include<bits/stdc++.h>
 #define for_(i, b, e) for(int i=b; i<=e; i++)
 using namespace std;
