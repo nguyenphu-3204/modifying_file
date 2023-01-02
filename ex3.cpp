@@ -1,6 +1,6 @@
 /*
 Ở phiên bản này mình dùng get_name() - hàm tự viết thay cho fs.getline()
-để tường minh hơn, tuy nhiên ở những bài tập sau mình sẽ dùng hàm có sẵn.
+để tường minh hơn, tuy nhiên ở những bài tập sau mình sẽ dùng hàm có sẵn....
 Thứ hai, trong biểu diễn chuỗi ta có thể dùng mảng char và kiểu dữ liệu string
 NHƯNG fs.getline() không hỗ trợ string.c_str() !!!!
 */
