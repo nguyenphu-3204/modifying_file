@@ -55,10 +55,9 @@ int main(){
     find_and_delete(key);
 
     //rewirte file
-
-    f.close();    
-    remove(filename);
-    f.open(filename, wirte_);
+    f.close();
+    remove(filename); // delete file
+    f.open(filename, wirte_); //re-creat file 
     f.seekg(0, fbegin);            // set pos = f.begin
     f.put(n+'0');
     for(auto name:l){
