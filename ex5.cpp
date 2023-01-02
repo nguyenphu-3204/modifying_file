@@ -55,7 +55,10 @@ int main(){
     find_and_delete(key);
 
     //rewirte file
-    truncate(filename, 0); //remove all characters in file
+
+    f.close();    
+    remove(filename);
+    f.open(filename, wirte_);
     f.seekg(0, fbegin);            // set pos = f.begin
     f.put(n+'0');
     for(auto name:l){
