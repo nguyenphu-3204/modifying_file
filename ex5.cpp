@@ -26,7 +26,7 @@ string lowercase_(string s){
 void get_studentName(){
     f.seekg(3, fbegin);
     l.resize(n, "");
-    for_(i, 0, n-1) getline(f, l[i]);
+    for(auto &name:l) getline(f, name);
 }
 
 bool match_(string const &name, string const &key){
