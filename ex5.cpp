@@ -24,6 +24,7 @@ string lowercase_(string s){
 }
 
 void get_studentName(){
+    f.seekg(3, fbegin);
     l.resize(n, "");
     for_(i, 0, n-1) getline(f, l[i]);
 }
@@ -31,6 +32,7 @@ void get_studentName(){
 bool match_(string const &name, string const &key){
     return lowercase_(name).find(lowercase_(key)) != -1;
 }
+
 void find_and_delete(string const &key){
     for_(i, 0, n-1){ 
         if( !match_(l[i], key) ) continue;
@@ -47,7 +49,6 @@ int main(){
     //read n and n students
     f.seekg(0, f.beg); // set position <- fbegin
     n = f.get() - '0';  // read n
-    f.ignore(1);     // skip '\0' character
     get_studentName(); //read n student name
     string key; 
     cout << "Enter student's name:\n";               
@@ -59,10 +60,9 @@ int main(){
     remove(filename); // delete file
     f.open(filename, wirte_); //re-creat file 
     f.seekg(0, fbegin);            // set pos = f.begin
-    f.put(n+'0');
+    f << n;
     for(auto name:l){
-        f.put('\n');
-        f.write(name.c_str(), name.size()); 
+        f << endl << name;
     } 
     cout << "Deleting student succed!\n";
     f.close();
